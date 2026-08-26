@@ -1,0 +1,85 @@
+@import "tailwindcss";
+@import "@fontsource-variable/outfit";
+@import "@fontsource/ibm-plex-mono/400.css";
+@import "@fontsource/ibm-plex-mono/500.css";
+
+@theme {
+  --font-sans: "Outfit Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  /* papel — fundos claros */
+  --color-paper-50: #fdfaf3;
+  --color-paper-100: #fbf7ee;
+  --color-paper-200: #f6efdf;
+  --color-paper-300: #efe5cf;
+
+  /* areia — fundos de página e bordas suaves */
+  --color-sand-100: #f3ecdf;
+  --color-sand-200: #ece2cd;
+  --color-sand-300: #e0d2b4;
+  --color-sand-400: #cdbb97;
+
+  /* casca — marrons (texto, sidebar, superfícies escuras) */
+  --color-bark-300: #d8c6ab;
+  --color-bark-400: #bfa987;
+  --color-bark-500: #a08868;
+  --color-bark-600: #7c6549;
+  --color-bark-700: #60492f;
+  --color-bark-800: #4a3728;
+  --color-bark-900: #3e2f23;
+  --color-bark-950: #2b2016;
+
+  /* brasa — acento laranja queimado */
+  --color-ember-100: #f7e3cf;
+  --color-ember-200: #eec9a4;
+  --color-ember-400: #dd8a45;
+  --color-ember-500: #c96b2e;
+  --color-ember-600: #ad571f;
+  --color-ember-700: #8a4519;
+
+  /* verde oliva p/ positivo e vinho p/ negativo (financeiro) */
+  --color-moss-500: #6d7f4b;
+  --color-moss-600: #57653a;
+  --color-wine-500: #9c4a38;
+
+  /* tinta — pretos quentes p/ blocos editoriais */
+  --color-ink-700: #35302a;
+  --color-ink-800: #26221d;
+  --color-ink-900: #1a1713;
+  --color-ink-950: #12100d;
+
+  /* linhas pontilhadas de preço do menu editorial */
+  --color-rule: #cbbfa4;
+}
+
+@layer base {
+  html {
+    @apply antialiased;
+  }
+  body {
+    @apply bg-sand-100 text-bark-900 font-sans;
+  }
+  ::selection {
+    @apply bg-ember-200 text-bark-900;
+  }
+}
+
+@utility tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+/* marquee editorial (único por página, respeita reduced motion) */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .animate-marquee {
+    animation: marquee 28s linear infinite;
+  }
+}
